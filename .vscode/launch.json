@@ -1,0 +1,62 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "projectName",
+      "type": "command",
+      "command": "shellCommand.execute", // Tasks Shell Input extension (augustocdias.tasks-shell-input)
+      "args": {
+        "command": "cat projectName",
+        "cwd": "${workspaceFolder}",
+        "useSingleResult": true
+      }
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Start Debugging",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/${input:projectName}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "make debug",
+      "miDebuggerPath": "/usr/bin/gdb"
+    },
+    {
+      "name": "Start Without Debugging",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/${input:projectName}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "make",
+      "miDebuggerPath": "/usr/bin/gdb"
+    }
+  ]
+}
