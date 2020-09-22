@@ -10,6 +10,6 @@
 #include <stdlib.h>
 
 int main(int const argc, char ** const argv) {
-    hw4();
+    hw4("hw4.in", "hw4.out");
     return EXIT_SUCCESS;
 }

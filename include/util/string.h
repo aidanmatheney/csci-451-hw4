@@ -6,8 +6,8 @@
 size_t safeSnprintf(
     char *buffer,
     size_t bufferLength,
-    char const *format,
     char const *callerDescription,
+    char const *format,
     ...
 );
 size_t safeVsnprintf(
@@ -19,8 +19,8 @@ size_t safeVsnprintf(
 );
 size_t safeSprintf(
     char *buffer,
-    char const *format,
     char const *callerDescription,
+    char const *format,
     ...
 );
 size_t safeVsprintf(

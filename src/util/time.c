@@ -26,6 +26,7 @@ time_t safeTime(char const * const callerDescription) {
             timeErrorCode,
             timeErrorMessage
         );
+        return -1;
     }
 
     return timeResult;

@@ -15,9 +15,9 @@
  *
  * @param buffer The buffer into which to write, or null if only the formatted string length is desired.
  * @param bufferLength The length of the buffer, or 0 if the buffer is null.
- * @param format The string format (printf).
  * @param callerDescription A description of the caller to be included in the error message. This could be the name of
  *                          the calling function, plus extra information if useful.
+ * @param format The string format (printf).
  * @param ... The string format arguments (printf).
  *
  * @returns The number of characters that would have been written if the buffer had been sufficiently large, not
@@ -26,12 +26,12 @@
 size_t safeSnprintf(
     char * const buffer,
     size_t const bufferLength,
-    char const * const format,
     char const * const callerDescription,
+    char const * const format,
     ...
 ) {
     va_list formatArgs;
-    va_start(formatArgs, callerDescription);
+    va_start(formatArgs, format);
     size_t const length = safeVsnprintf(buffer, bufferLength, format, formatArgs, callerDescription);
     va_end(formatArgs);
     return length;
@@ -80,21 +80,21 @@ size_t safeVsnprintf(
  * Format the string into the buffer. If the operation fails, abort the program with an error message.
  *
  * @param buffer The buffer into which to write.
- * @param format The string format (printf).
  * @param callerDescription A description of the caller to be included in the error message. This could be the name of
  *                          the calling function, plus extra information if useful.
+ * @param format The string format (printf).
  * @param ... The string format arguments (printf).
  *
  * @returns The number of characters written.
  */
 size_t safeSprintf(
     char * const buffer,
-    char const * const format,
     char const * const callerDescription,
+    char const * const format,
     ...
 ) {
     va_list formatArgs;
-    va_start(formatArgs, callerDescription);
+    va_start(formatArgs, format);
     size_t const length = safeVsprintf(buffer, format, formatArgs, callerDescription);
     va_end(formatArgs);
     return length;

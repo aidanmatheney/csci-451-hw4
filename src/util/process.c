@@ -30,6 +30,7 @@ pid_t safeFork(char const * const callerDescription) {
             forkErrorCode,
             forkErrorMessage
         );
+        return -1;
     }
 
     return forkResult;
