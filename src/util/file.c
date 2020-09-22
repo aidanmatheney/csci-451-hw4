@@ -3,8 +3,6 @@
 #include "../../include/util/guard.h"
 #include "../../include/util/error.h"
 
-#include "../../include/util/StringBuilder.h"
-
 #include <stdbool.h>
 #include <string.h>
 #include <stdarg.h>
@@ -153,30 +151,6 @@ bool safeFgets(
     }
 
     return true;
-}
-
-/**
- * Open a text file, read all the text in the file into a string, and then close the file.
- *
- * @param filePath The path to the file.
- *
- * @returns A string containing all text in the file. The caller is responsible for freeing this memory.
- */
-char *readAllFileText(char const * const filePath) {
-    guardNotNull(filePath, "filePath", "readAllFileText");
-
-    StringBuilder const fileTextBuilder = StringBuilder_create();
-
-    FILE * const file = safeFopen(filePath, "r", "readAllFileText");
-    char fgetsBuffer[100];
-    while (safeFgets(fgetsBuffer, 100, file, "readAllFileText")) {
-        StringBuilder_append(fileTextBuilder, fgetsBuffer);
-    }
-    fclose(file);
-
-    char * const fileText = StringBuilder_toStringAndDestroy(fileTextBuilder);
-
-    return fileText;
 }
 
 /**

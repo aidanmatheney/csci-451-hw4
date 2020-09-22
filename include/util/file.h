@@ -21,8 +21,6 @@ unsigned int safeVfprintf(
 
 bool safeFgets(char *buffer, size_t bufferLength, FILE *file, char const *callerDescription);
 
-char *readAllFileText(char const *filePath);
-
 int safeFscanf(
     FILE *file,
     char const *callerDescription,
